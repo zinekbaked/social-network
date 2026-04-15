@@ -43,7 +43,8 @@ router.post('/login', (req, res) => {
 
   db.query(sql, [username, password], (err, results) => {
     if (err) {
-      return res.status(500).json({ error: 'Login failed' });
+      console.log(err);
+      return res.status(500).json({ error: 'Login failed', detail: err.message });
     }
 
     if (results.length === 0) {
